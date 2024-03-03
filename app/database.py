@@ -30,7 +30,7 @@ def get_db():
 # For reference, if choosing to run raw sql instead of SQLAlechmy
 # while True:
 #     try: 
-#         conn = psycopg2.connect(host="localhost", database = "fastapi", user="postgres" , password="Ilikefood1", port="5433")
+#         conn = psycopg2.connect(host="localhost", database = "fastapi", user="postgres" , password="password", port="5433")
 #         cursor = conn.cursor(cursor_factory=RealDictCursor)
 #         print("Database connection was succesful!")
 #         break
