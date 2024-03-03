@@ -27,14 +27,14 @@ def get_db():
         db.close()
 
 
-# For reference, if choosing to run raw sql
-while True:
-    try: 
-        conn = psycopg2.connect(host="localhost", database = "fastapi", user="postgres" , password="Ilikefood1", port="5433")
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
-        print("Database connection was succesful!")
-        break
-    except Exception as error: 
-        print("Connecting to database failed")
-        print("Error:", error)
-        time.sleep(2) #seconds
+# For reference, if choosing to run raw sql instead of SQLAlechmy
+# while True:
+#     try: 
+#         conn = psycopg2.connect(host="localhost", database = "fastapi", user="postgres" , password="Ilikefood1", port="5433")
+#         cursor = conn.cursor(cursor_factory=RealDictCursor)
+#         print("Database connection was succesful!")
+#         break
+#     except Exception as error: 
+#         print("Connecting to database failed")
+#         print("Error:", error)
+#         time.sleep(2) #seconds
