@@ -7,7 +7,7 @@ import time
 from .config import settings
 
 SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.db_username}:{settings.db_password}@{settings.db_hostname}:{settings.db_port}/{settings.db_name}'
-# SQLALCHEMY_DATABASE_URL = f'postgresql://postgres:password@localhost:5433/fastapi'
+# SQLALCHEMY_DATABASE_URL = f'postgresql://postgres:password1@localhost:5433/fastapi'
 
 # engine responsible for establish connection
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
@@ -30,7 +30,7 @@ def get_db():
 # For reference, if choosing to run raw sql instead of SQLAlechmy
 # while True:
 #     try: 
-#         conn = psycopg2.connect(host="localhost", database = "fastapi", user="postgres" , password="password", port="5433")
+#         conn = psycopg2.connect(host="localhost", database = "fastapi", user="postgres" , password="password1", port="5433")
 #         cursor = conn.cursor(cursor_factory=RealDictCursor)
 #         print("Database connection was succesful!")
 #         break
