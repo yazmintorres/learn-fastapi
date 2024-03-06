@@ -1,0 +1,20 @@
+version: "3"
+services: 
+  api: 
+    image: ymtorres8/fastapi
+    depends_on: [postgres]
+    ports: 
+      - 80:8000 
+    environment: 
+        - DB_HOSTNAME=postgres
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes: 
+      - type: volume
+        source: postgres-db
+        target: /var/lib/postgresql/data
+volumes: 
+  postgres-db:

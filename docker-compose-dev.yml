@@ -1,0 +1,26 @@
+version: "3"
+services: 
+  api: 
+    build: .
+    depends_on: [postgres]
+    ports: 
+      - 8000:8000 
+    volumes:
+      - type: bind 
+        source: ./
+        target: /usr/src/app
+        read_only: true
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    environment: 
+        - DB_HOSTNAME=postgres
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes: 
+      - type: volume
+        source: postgres-db
+        target: /var/lib/postgresql/data
+volumes: 
+  postgres-db:
