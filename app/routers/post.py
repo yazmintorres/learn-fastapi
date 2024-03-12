@@ -39,11 +39,11 @@ def get_post(id: int, db: Session = Depends(get_db), current_user: models.User =
     # post = cursor.fetchone()
     # post = db.query(models.Post).filter(models.Post.id == id).first()
     post = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(models.Vote, models.Post.id == models.Vote.post_id, isouter=True).group_by(models.Post.id).filter(models.Post.id == id).first()
-    post, vote_count = post
-    formatted_posts = {"post": post, "votes": vote_count} 
     if post is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail = f"Post with id {id} is not found")
+    post, vote_count = post
+    formatted_posts = {"post": post, "votes": vote_count} 
     return formatted_posts
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT) 

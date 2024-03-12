@@ -10,7 +10,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     # 1. Hash the password 
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
-
+    
     #create new DB entry
     new_user = models.User(**user.model_dump())
     db.add(new_user)

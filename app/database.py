@@ -15,7 +15,7 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)
 # create a session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# create the base class for declarative mapping
+# create the base class for declarative mapping (for database model classes)
 Base = declarative_base()
 
 # Dependency, get a session to the DB

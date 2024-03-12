@@ -5,13 +5,17 @@ from .. import schemas, oauth2, models
 
 router = APIRouter(prefix="/vote", tags=["Votes"])
 
-@router.post("", status_code=status.HTTP_201_CREATED)
+@router.post("/", status_code=status.HTTP_201_CREATED)
 def create_vote(vote: schemas.Vote, db: Session = Depends(get_db), current_user: models.User = Depends(oauth2.get_current_user)):
     # check that post exists 
     post = db.query(models.Post).filter_by(id = vote.post_id).first()
     if post is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"Post {vote.post_id} does not exist")
+    
+    if post.owner_id == current_user.id:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, 
+                            detail="You cannot vote on your own post.")
 
     # check if the vote exists or not 
     existing_vote = db.query(models.Vote).filter_by(post_id = vote.post_id, user_id = current_user.id).first()
