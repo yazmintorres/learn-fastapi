@@ -1,6 +1,6 @@
 name: Build and Deploy Code 
 
-on: [push, pull_requests]
+on: [push, pull_request]
 
 jobs:
   job1: 
@@ -10,4 +10,3 @@ jobs:
         uses: actions/checkout@v4
       - name: say hi to Yazmin 
         run: echo "hello Yazmin"
-        
