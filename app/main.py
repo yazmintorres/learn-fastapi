@@ -27,7 +27,7 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message": "Successfully deployed from CI/CD pipeline"}
+    return {"message": "Successfully deployed to Ubuntu"}
 
 # @app.get("/sqlalchemy")
 # def test_posts(db: Session = Depends(get_db)):
