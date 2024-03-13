@@ -81,9 +81,9 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.PROD_HOST }}
-          username: root
+          username: ${{ secrets.PROD_USERNAME }}
           key: ${{secrets.PROD_SSH_KEY}}
           script: |
             cd app/src
             git pull 
-            echo "${{ secrets.PROD_PASSWORD }}" | su - yazmin -c 'sudo -S systemctl restart api'
+            echo "${{ secrets.PROD_PASSWORD }}" | sudo -S systemctl restart api
