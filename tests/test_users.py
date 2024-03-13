@@ -16,7 +16,7 @@ def test_create_user(client):
 
 def test_login_user(client, test_user):
     # first create a user, data for form data
-    response = client.post("/login", data={"username": test_user["email"], "password": test_user["password"]})
+    response = client.post("/auth/login", data={"username": test_user["email"], "password": test_user["password"]})
     
     # validate that we get back the response we expect
     login_response = schemas.Token(**response.json())
@@ -37,7 +37,7 @@ def test_login_user(client, test_user):
     ("hello123@gmail.com", None, 422)
     ])
 def test_incorrect_login(client, test_user, email, password, status_code):
-    response = client.post("/login", data={"username": email, "password": password})
+    response = client.post("/auth/login", data={"username": email, "password": password})
     assert response.status_code == status_code
     # assert response.json().get("detail") == "Invalid credentials"
 

@@ -10,7 +10,7 @@ router = APIRouter(
     tags=['Posts']
 )
 
-@router.get("/", response_model=List[schemas.PostOut])
+@router.get("", response_model=List[schemas.PostOut])
 def get_posts(db: Session = Depends(get_db), current_user: models.User = Depends(oauth2.get_current_user), limit: int = 10, skip: int = 0, search: Optional[str] = ""): 
     # cursor.execute("""SELECT * FROM posts""")
     # posts = cursor.fetchall()
@@ -19,7 +19,7 @@ def get_posts(db: Session = Depends(get_db), current_user: models.User = Depends
     formatted_posts = [{"post": post, "votes": vote_count} for post, vote_count in posts]
     return formatted_posts
 
-@router.post("/", status_code = status.HTTP_201_CREATED, response_model=schemas.Post)
+@router.post("", status_code = status.HTTP_201_CREATED, response_model=schemas.Post)
 def create_posts(post: schemas.PostCreate, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     # cursor.execute("""INSERT INTO posts (title, content, published) VALUES (%s, %s, %s) RETURNING * """, (post.title, post.content, post.published) )
     # new_post = cursor.fetchone()
