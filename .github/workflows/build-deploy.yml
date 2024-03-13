@@ -66,7 +66,7 @@ jobs:
       name: production
     runs-on: ubuntu-latest
     # this is needed so both build and deploy do not run at the same time 
-    # build must run before deploy job
+    # build must run before deploy 
     needs: [build]
     steps: 
       - name: pulling git repo 

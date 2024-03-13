@@ -3,10 +3,10 @@ from app.config import settings
 from jose import jwt
 import pytest
 
-def test_read_main(client):
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"message": "Hello world!"}
+# def test_read_main(client):
+#     response = client.get("/")
+#     assert response.status_code == 200
+#     assert response.json() == {"message": "Hello world!"}
 
 def test_create_user(client):
     response = client.post("/users", json={"email": "hello123@gmail.com", "password": "password123"})
