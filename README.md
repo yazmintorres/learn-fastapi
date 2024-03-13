@@ -1,22 +1,22 @@
 # Backend clone  of social media app by using FastAPI
 
-#### This API  has 4 resources
+#### This API  has 4 routes
 
-## 1) /posts resource
+## 1) /posts Route
 
-#### This resource is reponsible for creating a post, deleting a post, updating a post and retrieving post(s).
+#### This route is reponsible for creating a post, deleting a post, updating a post and retrieving post(s).
 
-## 2) /users resource
+## 2) /users Route
 
-#### This resource is for creating users and searching user by id.
+#### This route is for creating users and searching user by id.
 
-## 3) /auth resource
+## 3) /auth Route
 
-#### This resrource is for logging into the system.
+#### This route is for logging into the system.
 
-## 4) /vote resource
+## 4) /vote Route
 
- #### This resource is for the likes or vote system. This resource contains code to upvote or remove vote. There is not logic for down vote.
+ #### This route is for the likes or vote system. This route contains code to upvote or remove vote. There is not logic for down vote.
 
 # How to run locally
 First clone this repo by using following command
