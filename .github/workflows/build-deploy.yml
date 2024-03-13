@@ -65,8 +65,7 @@ jobs:
     environment: 
       name: production
     runs-on: ubuntu-latest
-    # this is needed so both build and deploy do not run at the same time 
-    # build must run before deploy 
+    # ensure that the deploy job doesn't start until the build job has finished successfully
     needs: [build]
     steps: 
       - name: pulling git repo 
@@ -77,4 +76,15 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-       
+           - name: executing remote ssh commands using password
+
+      - name: deploy to ubuntu server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          password: ${{ secrets.PROD_PASSWORD }}
+          script: |
+            cd app/src
+            git pull 
+            sudo systemctl restart api
