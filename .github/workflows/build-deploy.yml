@@ -82,7 +82,7 @@ jobs:
         with:
           host: ${{ secrets.PROD_HOST }}
           username: root
-          key: test
+          key: ${{secrets.PROD_SSH_KEY}}
           script: |
             cd app/src
             git pull 
