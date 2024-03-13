@@ -87,3 +87,4 @@ jobs:
             cd app/src
             git pull 
             echo "${{ secrets.PROD_PASSWORD }}" | su - yazmin -c 'sudo -S systemctl restart api'
+          debug: true
