@@ -32,7 +32,7 @@ cd fastapi-project
 
 ````
 
-Then install all dependencies
+then install all dependencies
 
 ````
 
@@ -40,14 +40,14 @@ pip install -r requirements.txt
 
 ````
 
-Then cd into app folder and run the following command
+then run the following command
 ````
 
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 
 ````
 
-Then you can use following link to use the  API
+then you can use following link to use the  API
 
 ````
 
@@ -76,5 +76,5 @@ Then, run the following command from the root folder to create the necessary tab
 alembic upgrade head
 
 ````
-### Note: SECRET_KEY in this exmple is just a pseudo key. You need to get a key for youself and you can get the SECRET_KEY from [FastAPI Documentation - Obtain a Secret Key](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=secret+key#handle-jwt-tokens)
+##### Note: SECRET_KEY in this exmple is just a pseudo key. You need to get a key for youself and you can get the SECRET_KEY from FastAPI Documentation - [Obtain a Secret Key](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=secret+key#handle-jwt-tokens)
 
